@@ -1,0 +1,90 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+    <changeSet id="init-1" author="vahe-sim">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <sql>
+            create table users
+            (
+                id        bigserial primary key,
+                username  varchar(50),
+                password  varchar(255),
+                user_type varchar(50)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-2" author="vahe-sim">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="dates"/>
+            </not>
+        </preConditions>
+        <sql>
+            create table dates
+            (
+                id           bigserial primary key,
+                request_date date
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-3" author="vahe-sim">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="rates"/>
+            </not>
+        </preConditions>
+        <sql>
+            create table rates
+            (
+                id       bigserial primary key,
+                rate     numeric(19, 2),
+                currency varchar(5)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="init-4" author="vahe-sim">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="rate_dates"/>
+            </not>
+        </preConditions>
+        <sql>
+            create table rate_dates
+            (
+                rate_id bigint,
+                date_id bigint,
+                constraint FK_RATE_ID_RATES_ID foreign key (rate_id) references rates (ID),
+                constraint FK_DATE_ID_DATES_ID foreign key (date_id) references dates (ID)
+
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="init-5" author="vahe-sim">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="histories"/>
+            </not>
+        </preConditions>
+        <sql>
+            create table histories
+            (
+                id       bigserial primary key,
+                value     numeric(19, 2),
+                from_currency varchar(5),
+                to_currency varchar(5),
+                user_id bigint,
+                constraint FK_USER_ID_USERS_ID foreign key (user_id) references users (ID)
+
+            );
+        </sql>
+    </changeSet>
+</databaseChangeLog>

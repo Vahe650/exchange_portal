@@ -1,0 +1,45 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /exchange-service
+spring:
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/exchange
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    liquibase-schema: migration
+    default-schema: public
+
+
+service:
+  search:
+    url: ${config.client.gt2.base-url}/search/v1
+    name: search
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+
+jwt:
+  secret: kscfadcad@29
+  expiration: 330000
+
+exceptions:
+  show-stack-trace: true
+  instance-uri: urn:traceId:%s
