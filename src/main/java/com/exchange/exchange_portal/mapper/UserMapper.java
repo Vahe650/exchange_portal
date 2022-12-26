@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
-    @Mapping(target = "password",constant = "")
+    @Mapping(target = "password", constant = "")
     UserDto map(UserEntity entity);
 
     UserEntity map(UserDto dto);

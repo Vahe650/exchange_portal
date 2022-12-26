@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
+
 @Getter
 @XmlRootElement(namespace = "http://www.gesmes.org/xml/2002-08-01", name = "Cube")
 public class CubeTime {

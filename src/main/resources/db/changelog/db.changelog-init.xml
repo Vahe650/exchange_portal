@@ -77,11 +77,11 @@
         <sql>
             create table histories
             (
-                id       bigserial primary key,
-                value     numeric(19, 2),
+                id            bigserial primary key,
+                value         numeric(19, 2),
                 from_currency varchar(5),
-                to_currency varchar(5),
-                user_id bigint,
+                to_currency   varchar(5),
+                user_id       bigint,
                 constraint FK_USER_ID_USERS_ID foreign key (user_id) references users (ID)
 
             );

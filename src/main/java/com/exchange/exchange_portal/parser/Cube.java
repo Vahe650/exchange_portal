@@ -1,10 +1,10 @@
 package com.exchange.exchange_portal.parser;
 
-import lombok.Data;
 import lombok.Getter;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 @Getter
 @XmlRootElement(namespace = "http://www.ecb.int/vocabulary/2002-08-01/eurofxref", name = "Envelope")
 public class Cube {

@@ -1,6 +1,5 @@
 package com.exchange.exchange_portal.parser;
 
-import lombok.Data;
 import lombok.Getter;
 
 import javax.xml.bind.annotation.XmlElement;

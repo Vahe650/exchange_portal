@@ -4,7 +4,6 @@ import com.exchange.exchange_portal.dto.RateDto;
 import com.exchange.exchange_portal.entity.RateEntity;
 import com.exchange.exchange_portal.parser.CubeRate;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 import java.util.List;
 

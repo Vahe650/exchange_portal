@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 public class ConverterUtil {
 
     public BigDecimal convert(BigDecimal wanted, BigDecimal from, BigDecimal to) {
-        return wanted.multiply(from).divide(to,3, RoundingMode.DOWN);
+        return wanted.multiply(from).divide(to, 3, RoundingMode.DOWN);
     }
 
 }
